@@ -1,0 +1,57 @@
+---
+title: "Lab 6 Challenge"
+author: "Nicholas Seah"
+date: "5/16/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(testthat)
+library(twelvedays)
+usethis::use_package("twelvedays")
+```
+
+# Test pluralize_gift
+
+```{r}
+test_that("pluralize_gift", {
+  expect_match(pluralize_gift("car"), "cars")
+})
+```
+
+```{r}
+test_that("pluralize_gift", {
+  expect_match(pluralize_gift("candy"), "candies")
+})
+```
+
+# Test make_phrase
+
+```{r}
+test_that("make_phrase", {
+  expect_match(make_phrase(3, "three", "car", "speeding", "green", ""), "three green cars speeding")
+})
+```
+
+```{r}
+test_that("make_phrase", {
+  expect_match(make_phrase(5, "five", "Drake", "singing", "lit", "at SLO"), "five lit Drakes singing at SLO")
+})
+```
+
+```{r}
+xmas <- read.csv("https://www.dropbox.com/s/e584pryn8evm1gz/xmas.csv?dl=1")
+```
+
+# Test sing_day
+
+```{r}
+test_that("sing_day", {
+  expect_match(sing_day(xmas, 3, Gift.Item), "On the third day of Christmas, my true love sent to me, 
+hen, 
+dove, 
+partridge")
+})
+```
+
